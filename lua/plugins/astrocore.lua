@@ -1,9 +1,12 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
--- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
--- Configuration documentation can be found with `:h astrocore`
--- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
---       as this provides autocomplete and documentation while editing
+local function term_nav(dir)
+  return function()
+    if vim.api.nvim_win_get_config(0).zindex then
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-" .. dir .. ">", true, false, true), "n", false)
+    else
+      vim.cmd.wincmd(dir)
+    end
+  end
+end
 
 ---@type LazySpec
 return {
@@ -33,39 +36,40 @@ return {
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
       },
-      g = { -- vim.g.<key>
-        -- configure global vim variables (vim.g)
-        -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
-        -- This can be found in the `lua/lazy_setup.lua` file
-      },
     },
     -- Mappings can be configured through AstroCore as well.
     -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
     mappings = {
       -- first key is the mode
-      n = {
-        -- second key is the lefthand side of the map
-
-        -- navigate buffer tabs
-        ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
-
-        -- mappings seen under group name "Buffer"
-        ["<Leader>bd"] = {
-          function()
-            require("astroui.status.heirline").buffer_picker(
-              function(bufnr) require("astrocore.buffer").close(bufnr) end
-            )
-          end,
-          desc = "Close buffer from tabline",
-        },
-
-        -- tables with just a `desc` key will be registered with which-key if it's installed
-        -- this is useful for naming menus
-        -- ["<Leader>b"] = { desc = "Buffers" },
-
+      t = {
         -- setting a mapping to false will disable it
-        ["<C-S>"] = false,
+        ["<C-H>"] = false,
+        ["<C-J>"] = false,
+        ["<C-K>"] = false,
+        ["<C-L>"] = false,
+        ["<A-h>"] = term_nav "h",
+        ["<A-j>"] = term_nav "j",
+        ["<A-k>"] = term_nav "k",
+        ["<A-l>"] = term_nav "l",
+      },
+      n = {
+        -- setting a mapping to false will disable it
+        ["<C-h>"] = false,
+        ["<C-j>"] = false,
+        ["<C-k>"] = false,
+        ["<C-l>"] = false,
+        ["<C-H>"] = false,
+        ["<C-J>"] = false,
+        ["<C-K>"] = false,
+        ["<C-L>"] = false,
+        ["<A-h>"] = "<C-w>h",
+        ["<A-j>"] = "<C-w>j",
+        ["<A-k>"] = "<C-w>k",
+        ["<A-l>"] = "<C-w>l",
+        ["<A-H>"] = "<C-w>H",
+        ["<A-J>"] = "<C-w>J",
+        ["<A-K>"] = "<C-w>K",
+        ["<A-L>"] = "<C-w>L",
       },
     },
   },
