@@ -20,4 +20,13 @@ return {
       },
     },
   },
+
+  {
+    "saghen/blink.cmp",
+    opts = {
+      keymap = {
+        ["<C-l>"] = { "select_and_accept", "fallback" },
+      },
+    },
+  },
 }
