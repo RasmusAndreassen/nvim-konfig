@@ -37,6 +37,13 @@ return {
         wrap = false, -- sets vim.opt.wrap
       },
     },
+    treesitter = {
+      ensure_installed = {
+        "lua",
+        "vim",
+        -- add more arguments for adding more treesitter parsers
+      },
+    },
     -- Mappings can be configured through AstroCore as well.
     -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
     mappings = {

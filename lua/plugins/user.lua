@@ -27,6 +27,11 @@ return {
       keymap = {
         ["<C-l>"] = { "select_and_accept", "fallback" },
       },
+      fuzzy = {
+        prebuilt_binaries = {
+          force_version = "v*",
+        },
+      },
     },
   },
 }

@@ -11,5 +11,6 @@ return {
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.lean" },
   { import = "astrocommunity.pack.typescript" },
+  { import = "astrocommunity.pack.scala" },
   -- import/override with your plugins folder
 }

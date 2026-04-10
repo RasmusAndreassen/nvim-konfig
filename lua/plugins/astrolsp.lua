@@ -22,10 +22,6 @@ return {
       },
       timeout_ms = 1000, -- default format timeout
     },
-    -- enable servers that you already have installed without mason
-    -- servers = {
-    --   "apollo-language-server"
-    -- },
     -- mappings to be set up on attaching of a language server
     mappings = {
       n = {
