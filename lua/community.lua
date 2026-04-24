@@ -12,5 +12,13 @@ return {
   { import = "astrocommunity.pack.lean" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.scala" },
+  {
+    import = "astrocommunity.docker.lazydocker",
+    keys = {
+      ["<Leader>td"] = {
+        "Lazydocker"
+      }
+    }
+  },
   -- import/override with your plugins folder
 }
