@@ -52,5 +52,19 @@ return {
         v = { j = { j = false, k = "<Esc>" } },
       }
     }
-  }
+  },
+
+  {
+    "tpope/vim-abolish",
+    init = function ()
+      vim.g.abolish_no_mappings = true
+    end
+  },
+
+  {
+    "esensar/nvim-dev-container",
+    init = function ()
+      require"devcontainer".setup{}
+    end
+  },
 }
